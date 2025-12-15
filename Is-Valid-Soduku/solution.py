@@ -15,7 +15,7 @@ def isValidSudoku(board):
     # Get all 3x3 boxes
     boxes = get_box(board)
 
-    1. all values in 3x3 box should be unique
+    # 1. all values in 3x3 box should be unique
     for box in boxes:
         seen = set()
         # Check if box has value repeated, return False
@@ -59,6 +59,7 @@ board = \
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
+
 
 
 print(isValidSudoku(board))
