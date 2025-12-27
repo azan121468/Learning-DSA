@@ -21,14 +21,18 @@ class Trie:
 
     def search(self, word: str, search_full_word: bool = True) -> bool:
         #search_full_word argument is required to make prefix check possible without requiring additional function. 
-        cur = self.head
+        def dfs(node: TrieNode, i: int) -> bool:
+            if i == len(word):
+                return node.is_end if search_full_word else True
 
-        for char in word:
-            if char not in cur.next:
-                return False
-            cur = cur.next[char]
-        
-        return cur.is_end if search_full_word else True
+            if word[i] == '.':
+                # for next_node in node.next.values():
+                #     dfs(next_node, i+1)
+                return any(dfs(next_node, i+1) for next_node in node.next.values())
+
+            return word[i] in node.next and dfs(node.next[word[i]], i+1)
+
+        return dfs(self.head, 0)
 
     def startsWith(self, prefix: str) -> bool:
         return self.search(prefix, search_full_word=False)
@@ -40,7 +44,11 @@ for val in to_insert:
     c.insert(val)
 
 assert c.search(random.choice(to_insert))
-assert not c.search('Hacker')
+assert c.search('Azan')
+
+assert c.search('A..n')
+assert c.search('Sha..d')
+assert c.search('Tes..ng')
 
 random_choice = random.choice(to_insert)
 random_prefix = random_choice[:random.choice(range(0, len(random_choice)-1))]
