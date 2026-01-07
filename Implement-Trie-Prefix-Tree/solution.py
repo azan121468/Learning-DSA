@@ -26,7 +26,7 @@ class Trie:
         for char in word:
             if char not in cur.next:
                 return False
-            cur = cur.nxt[char]
+            cur = cur.next[char]
         
         return cur.is_end if search_full_word else True
 
