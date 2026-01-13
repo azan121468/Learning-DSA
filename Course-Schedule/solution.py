@@ -1,7 +1,7 @@
 from sample import *
 
 def canFinish(numCourses: int, prerequisites: list) -> bool:
-    UNVISITED, VISITING, VISITED = 0, 1, 2
+    VISITING, VISITED = 1, 2
     premap = {i: [] for i in range(numCourses)}
 
     # prerequisites = to_take, required 
