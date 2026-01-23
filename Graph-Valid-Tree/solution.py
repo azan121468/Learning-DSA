@@ -19,7 +19,7 @@ def validTree(n: int, edges: list[list[int]]) -> bool:
         visited.add(cur)
 
         for child in adj[cur]:
-            #in undirected graph, visiting parent from chlid will lead to False cycle detection and parent and child both point to each other so we won't visit.
+            #in an undirected graph, visiting parent from child will lead to False cycle detection.
             if child == parent:
                 continue
 
