@@ -23,13 +23,10 @@ def rotate(matrix: list) -> None:
             i += 1
             j -= 1
 
-    #3. Return the result
-    return matrix
 
-
-ans = rotate(input1)
-print(ans)
-ans = rotate(input2)
-print(ans)
-ans = rotate(input3)
-print(ans)
+rotate(input1)
+print(input1)
+rotate(input2)
+print(input2)
+rotate(input3)
+print(input3)
