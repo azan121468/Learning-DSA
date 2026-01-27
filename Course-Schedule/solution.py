@@ -1,14 +1,15 @@
 from sample import *
 
 def canFinish(numCourses: int, prerequisites: list) -> bool:
-    VISITING, VISITED = 1, 2
+    UNVISITED, VISITING, VISITED = 0, 1, 2
     premap = {i: [] for i in range(numCourses)}
 
     # prerequisites = to_take, required 
     for to_take, required in prerequisites:
         premap[to_take].append(required)
     
-    state = [0] * numCourses
+    # initialize all course as unvisited at start
+    state = [UNVISITED] * numCourses
 
     def dfs(course):
         if state[course] == VISITING:  #cycle detected as we are revisiting a node which is already in visiting state
